@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HeartIQ design system — medical-grade dark luxury */
+@layer base {
+  :root {
+    /* Core surfaces */
+    --background: 215 70% 5%;          /* #050d1a deep navy */
+    --foreground: 210 40% 97%;         /* #f8fafc */
+
+    --surface-1: 215 55% 8%;           /* obsidian panel */
+    --surface-2: 215 50% 11%;          /* elevated panel */
+    --surface-3: 215 45% 14%;
+
+    --card: 215 55% 8%;
+    --card-foreground: 210 40% 97%;
+
+    --popover: 215 60% 7%;
+    --popover-foreground: 210 40% 97%;
+
+    /* Brand: bioluminescent crimson-coral (heart / ECG) */
+    --primary: 351 100% 59%;           /* #ff2d55 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 351 100% 70%;
+
+    /* Secondary: neon teal (AI / data) */
+    --secondary: 173 100% 45%;         /* #00e5cc */
+    --secondary-foreground: 215 70% 5%;
+
+    --muted: 215 30% 16%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 173 100% 45%;
+    --accent-foreground: 215 70% 5%;
+
+    --warning: 38 95% 60%;
+    --success: 152 75% 50%;
+    --destructive: 351 95% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 35% 18%;
+    --input: 215 40% 14%;
+    --ring: 351 100% 59%;
+
+    --radius: 0.875rem;
+
+    /* Gradients */
+    --gradient-hero: radial-gradient(1200px 600px at 50% 50%, hsl(351 100% 59% / 0.15), transparent 70%);
+    --gradient-panel: linear-gradient(135deg, hsl(215 55% 9% / 0.85), hsl(215 50% 7% / 0.6));
+    --gradient-coral: linear-gradient(135deg, hsl(351 100% 59%), hsl(351 95% 50%));
+    --gradient-teal: linear-gradient(135deg, hsl(173 100% 45%), hsl(180 100% 38%));
+    --gradient-cta: linear-gradient(180deg, hsl(215 70% 5%), hsl(215 65% 10%));
+
+    /* Shadows */
+    --shadow-coral: 0 0 40px hsl(351 100% 59% / 0.35);
+    --shadow-teal: 0 0 30px hsl(173 100% 45% / 0.3);
+    --shadow-panel: 0 24px 60px -20px hsl(215 80% 2% / 0.8);
+
+    /* Sidebar */
+    --sidebar-background: 215 60% 6%;
+    --sidebar-foreground: 210 30% 80%;
+    --sidebar-primary: 351 100% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 45% 12%;
+    --sidebar-accent-foreground: 210 40% 97%;
+    --sidebar-border: 215 40% 14%;
+    --sidebar-ring: 351 100% 59%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body { @apply bg-background text-foreground; }
+  body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    background-image:
+      radial-gradient(900px 500px at 80% -10%, hsl(173 100% 45% / 0.08), transparent 60%),
+      radial-gradient(800px 600px at -10% 110%, hsl(351 100% 59% / 0.10), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; letter-spacing: -0.02em; }
+  .font-mono, code, pre { font-family: 'JetBrains Mono', monospace; }
+}
+
+@layer components {
+  .glass {
+    background: var(--gradient-panel);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(210 40% 97% / 0.08);
+  }
+  .glass-strong {
+    background: linear-gradient(135deg, hsl(215 55% 11% / 0.9), hsl(215 50% 8% / 0.75));
+    backdrop-filter: blur(28px);
+    border: 1px solid hsl(210 40% 97% / 0.12);
+  }
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+  .text-gradient-coral {
+    background: var(--gradient-coral);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-teal {
+    background: var(--gradient-teal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ring-coral { box-shadow: 0 0 0 1px hsl(351 100% 59% / 0.4), 0 0 30px hsl(351 100% 59% / 0.25); }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(215 35% 22%); border-radius: 99px; }
+}
+
+@layer utilities {
+  .animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
+  .animate-pulse-ring { animation: pulseRing 2.2s cubic-bezier(0.4,0,0.2,1) infinite; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, hsl(351 100% 59% / 0.25), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2.4s linear infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  20% { transform: scale(1.06); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.04); }
+}
+@keyframes pulseRing {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

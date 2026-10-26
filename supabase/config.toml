@@ -1,0 +1,13 @@
+project_id = "labeqasipyugugelgmfd"
+
+[functions.grok-chat]
+verify_jwt = false
+
+[functions.medicine-info]
+verify_jwt = false
+
+[functions.groq-medicine]
+verify_jwt = false
+
+[functions.ecg-predict]
+verify_jwt = false
